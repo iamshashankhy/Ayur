@@ -1,0 +1,317 @@
+"use client";
+
+import { BarChart3, Clock, Activity, Lightbulb, User, TrendingUp } from 'lucide-react';
+
+export default function WelcomeCards() {
+  return (
+    <div className="space-y-6">
+      {/* Welcome Banner */}
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome back, Sarah!</h2>
+            <p className="text-gray-600">Your Vata-Pitta constitution is looking balanced today</p>
+          </div>
+          <div className="text-right">
+            <div className="bg-green-100 rounded-lg p-4">
+              <p className="text-sm text-gray-600 mb-1">Wellness Score</p>
+              <p className="text-3xl font-bold text-green-600">78</p>
+              <p className="text-xs text-gray-500">Last updated: Today, 9:00 AM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Dosha Constitution Card */}
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold text-gray-800">Your Dosha Constitution</h3>
+          <div className="flex items-center space-x-2">
+            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Assessment Complete</span>
+            <span className="text-sm text-gray-500">Sept 3, 2025</span>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="text-lg font-semibold text-teal-600 mb-2">Vata-Pitta</h4>
+            <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-sm">Embedded App</span>
+            <p className="text-gray-600 mt-4 leading-relaxed">
+              You have a Vata-Pitta constitution, which means you're naturally energetic and driven, 
+              with a quick mind and strong digestive fire. You may be prone to anxiety and heat-related imbalances.
+            </p>
+          </div>
+          <div className="flex items-center justify-center">
+            <div className="relative w-32 h-32">
+              <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 36 36">
+                <path
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="#e5e7eb"
+                  strokeWidth="3"
+                />
+                <path
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="#8b5cf6"
+                  strokeWidth="3"
+                  strokeDasharray="45, 100"
+                />
+                <path
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="#f97316"
+                  strokeWidth="3"
+                  strokeDasharray="40, 100"
+                  strokeDashoffset="-45"
+                />
+                <path
+                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  fill="none"
+                  stroke="#10b981"
+                  strokeWidth="3"
+                  strokeDasharray="15, 100"
+                  strokeDashoffset="-85"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-purple-500 rounded mr-3"></div>
+              <span className="text-gray-700">Vata</span>
+            </div>
+            <span className="font-semibold">45%</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-orange-500 rounded mr-3"></div>
+              <span className="text-gray-700">Pitta</span>
+            </div>
+            <span className="font-semibold">40%</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-4 h-4 bg-green-500 rounded mr-3"></div>
+              <span className="text-gray-700">Kapha</span>
+            </div>
+            <span className="font-semibold">15%</span>
+          </div>
+        </div>
+        
+        <div className="mt-6 flex items-center justify-between bg-green-50 p-4 rounded-lg">
+          <div>
+            <span className="text-sm text-gray-600">Confidence Level:</span>
+            <span className="font-bold text-green-600 ml-2">91%</span>
+          </div>
+          <div>
+            <span className="text-sm text-gray-600">Risk Level:</span>
+            <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm ml-2">Low</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Health Metrics Grid */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Health Metrics */}
+        <div className="bg-white rounded-lg p-6 shadow-sm">
+          <h3 className="text-lg font-bold text-gray-800 mb-4">Health Metrics</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <div className="flex items-center mb-2">
+                <span className="text-2xl mr-2">😴</span>
+                <span className="text-sm text-gray-600">Sleep Quality</span>
+              </div>
+              <p className="text-2xl font-bold text-gray-800">85</p>
+            </div>
+            <div className="bg-red-50 p-4 rounded-lg">
+              <div className="flex items-center mb-2">
+                <span className="text-2xl mr-2">🔥</span>
+                <span className="text-sm text-gray-600">Digestive Health</span>
+              </div>
+              <p className="text-2xl font-bold text-gray-800">72</p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <div className="flex items-center mb-2">
+                <span className="text-2xl mr-2">🧘</span>
+                <span className="text-sm text-gray-600">Stress Level</span>
+              </div>
+              <p className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Moderate</p>
+            </div>
+            <div className="bg-yellow-50 p-4 rounded-lg">
+              <div className="flex items-center mb-2">
+                <span className="text-2xl mr-2">⚡</span>
+                <span className="text-sm text-gray-600">Energy Level</span>
+              </div>
+              <p className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Good</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Today's Focus */}
+        <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-bold text-gray-800">Today's Focus</h3>
+            <span className="text-sm text-orange-600">🍂 Autumn: Focus on grounding practices</span>
+          </div>
+          <div className="flex space-x-2 mb-4">
+            <button className="bg-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium">Diet</button>
+            <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm">Lifestyle</button>
+            <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm">Yoga</button>
+          </div>
+          <div className="space-y-3">
+            <div className="flex items-center">
+              <span className="text-green-500 mr-3">✓</span>
+              <span className="text-gray-700">Start with warm oatmeal with cinnamon</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-500 mr-3">✓</span>
+              <span className="text-gray-700">Include sweet, sour, and salty tastes</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-500 mr-3">✓</span>
+              <span className="text-gray-700">Avoid cold drinks and raw foods</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-green-500 mr-3">✓</span>
+              <span className="text-gray-700">Have your largest meal at lunch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* AI Health Insights and Progress Tracking */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* AI Health Insights */}
+        <div className="bg-white rounded-lg p-6 shadow-sm">
+          <h3 className="text-lg font-bold text-gray-800 mb-4">AI Health Insights</h3>
+          <div className="space-y-4">
+            <div className="border-l-4 border-red-400 bg-red-50 p-4 rounded-r-lg">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <span className="text-xl mr-2">🔥</span>
+                  <span className="font-semibold text-gray-800">Digestive Fire</span>
+                </div>
+                <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">High Priority</span>
+              </div>
+              <p className="text-gray-700 text-sm">
+                Your Pitta influence gives you strong digestion, but irregular Vata can disrupt it. Eat at consistent times.
+              </p>
+            </div>
+            
+            <div className="border-l-4 border-orange-400 bg-orange-50 p-4 rounded-r-lg">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <span className="text-xl mr-2">😴</span>
+                  <span className="font-semibold text-gray-800">Sleep Pattern</span>
+                </div>
+                <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs font-medium">Medium Priority</span>
+              </div>
+              <p className="text-gray-700 text-sm">
+                Your Vata nature may cause difficulty falling asleep. A calming bedtime routine is essential.
+              </p>
+            </div>
+            
+            <div className="border-l-4 border-red-400 bg-red-50 p-4 rounded-r-lg">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center">
+                  <span className="text-xl mr-2">⚠️</span>
+                  <span className="font-semibold text-gray-800">Stress Response</span>
+                </div>
+                <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">High Priority</span>
+              </div>
+              <p className="text-gray-700 text-sm">
+                You're prone to mental overstimulation. Regular meditation will be particularly beneficial.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress Tracking */}
+        <div className="bg-white rounded-lg p-6 shadow-sm">
+          <h3 className="text-lg font-bold text-gray-800 mb-4">Progress Tracking</h3>
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="text-center">
+              <p className="text-3xl font-bold text-teal-600">12</p>
+              <p className="text-sm text-gray-600">Day Streak</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-teal-600">7/10</p>
+              <p className="text-sm text-gray-600">Goals Completed</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-teal-600">+2</p>
+              <p className="text-sm text-gray-600">Weekly Improvement</p>
+            </div>
+          </div>
+          <div className="mb-4">
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="bg-teal-600 h-2 rounded-full" style={{ width: '70%' }}></div>
+            </div>
+            <p className="text-sm text-gray-600 mt-2">70% of weekly goals completed</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Actions and Today's Tasks */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Quick Actions */}
+        <div className="bg-white rounded-lg p-6 shadow-sm">
+          <h3 className="text-lg font-bold text-gray-800 mb-4">Quick Actions</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <button className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors">
+              <div className="text-2xl mb-2">📊</div>
+              <p className="text-sm font-medium text-gray-800">View Full Report</p>
+            </button>
+            <button className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors">
+              <div className="text-2xl mb-2">💡</div>
+              <p className="text-sm font-medium text-gray-800">Today's Tips</p>
+            </button>
+            <button className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors">
+              <div className="text-2xl mb-2">🔗</div>
+              <p className="text-sm font-medium text-gray-800">Connect Device</p>
+            </button>
+            <button className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors">
+              <div className="text-2xl mb-2">📅</div>
+              <p className="text-sm font-medium text-gray-800">Schedule Follow-up</p>
+            </button>
+            <button className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors">
+              <div className="text-2xl mb-2">📚</div>
+              <p className="text-sm font-medium text-gray-800">Learn About Dosha</p>
+            </button>
+            <button className="bg-gray-50 p-4 rounded-lg text-center hover:bg-gray-100 transition-colors">
+              <div className="text-2xl mb-2">🎯</div>
+              <p className="text-sm font-medium text-gray-800">Set New Goals</p>
+            </button>
+          </div>
+        </div>
+
+        {/* Today's Tasks */}
+        <div className="bg-white rounded-lg p-6 shadow-sm">
+          <h3 className="text-lg font-bold text-gray-800 mb-4">Today's Tasks</h3>
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <input type="checkbox" className="mr-3 w-4 h-4 text-teal-600 rounded" />
+              <span className="text-gray-700">Complete daily meditation</span>
+            </div>
+            <div className="flex items-center">
+              <input type="checkbox" className="mr-3 w-4 h-4 text-teal-600 rounded" />
+              <span className="text-gray-700">Log evening meal</span>
+            </div>
+            <div className="flex items-center">
+              <input type="checkbox" className="mr-3 w-4 h-4 text-teal-600 rounded" />
+              <span className="text-gray-700">Take stress assessment</span>
+            </div>
+            <div className="flex items-center">
+              <input type="checkbox" className="mr-3 w-4 h-4 text-teal-600 rounded" />
+              <span className="text-gray-700">Review weekly progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
