@@ -42,7 +42,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </Link>
               </li>
               <li>
-                <Link href="/health-analysis" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link href="/health-analysis/assessment" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
                   <span className="mr-3">⚖️</span>
                   Dosha Analysis
                 </Link>

@@ -61,7 +61,10 @@ export default function HealthAnalysis() {
             <div className="bg-red-100 rounded-lg p-6">
               <h3 className="text-lg font-bold text-gray-800 mb-4">Quick Action</h3>
               <div className="space-y-3">
-                <button className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors font-medium">
+                <button 
+                  onClick={() => window.location.href = '/health-analysis/assessment'}
+                  className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors font-medium"
+                >
                   Health Assessment
                 </button>
                 <button className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors font-medium">
