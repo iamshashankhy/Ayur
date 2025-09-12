@@ -19,10 +19,10 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="/" className="text-gray-800 hover:text-gray-600 font-medium">Home</Link>
-          <Link href="#about" className="text-gray-800 hover:text-gray-600 font-medium">About</Link>
-          <Link href="#features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
-          <Link href="#how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
-          <Link href="#contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
+          <Link href="/about" className="text-gray-800 hover:text-gray-600 font-medium">About</Link>
+          <Link href="/features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
+          <Link href="/how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
+          <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
           <Link href="/auth/signin" className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium">
             SignIn/SignUp
           </Link>
@@ -40,10 +40,10 @@ export default function Header() {
         <div className="md:hidden mt-4 pb-4">
           <nav className="flex flex-col space-y-4">
             <Link href="/" className="text-gray-800 hover:text-gray-600 font-medium">Home</Link>
-            <Link href="#about" className="text-gray-800 hover:text-gray-600 font-medium">About</Link>
-            <Link href="#features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
-            <Link href="#how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
-            <Link href="#contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
+            <Link href="/about" className="text-gray-800 hover:text-gray-600 font-medium">About</Link>
+            <Link href="/features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
+            <Link href="/how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
+            <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
             <Link href="/auth/signin" className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium w-fit">
               SignIn/SignUp
             </Link>
