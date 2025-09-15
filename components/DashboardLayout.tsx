@@ -2,9 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Bell, Settings, User } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Bell, Settings, User, Home } from 'lucide-react';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  const isActive = (path: string) => {
+    return pathname === path;
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f0f9f0' }}>
       {/* Top Header */}
@@ -15,9 +22,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <p className="text-sm text-gray-600">Discover your Ayurvedic body constitution</p>
           </div>
           <div className="flex items-center space-x-4">
+            <Link href="/">
+              <Home className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
+            </Link>
             <Bell className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
-            <Settings className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
-            <User className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
+            <Link href="/dashboard/settings">
+              <Settings className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
+            </Link>
+            <Link href="/dashboard/profile">
+              <User className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
+            </Link>
           </div>
         </div>
       </header>
@@ -36,45 +50,97 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <nav className="py-6">
             <ul className="space-y-2">
               <li>
-                <Link href="/dashboard" className="flex items-center px-6 py-3 text-white font-medium" style={{ backgroundColor: '#4a7c59' }}>
+                <Link 
+                  href="/dashboard" 
+                  className={`flex items-center px-6 py-3 text-white font-medium ${
+                    isActive('/dashboard') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">📊</span>
                   Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/health-analysis/assessment" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link 
+                  href="/health-analysis/assessment" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/health-analysis/assessment') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">⚖️</span>
                   Dosha Analysis
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/health-reports" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link 
+                  href="/dashboard/health-reports" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/dashboard/health-reports') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">📋</span>
                   Health Reports
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/diet-plan" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link 
+                  href="/dashboard/diet-plan" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/dashboard/diet-plan') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">🍽️</span>
                   Diet Plan
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/yoga-wellness" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link 
+                  href="/dashboard/yoga-wellness" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/dashboard/yoga-wellness') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">🧘</span>
                   Yoga & Wellness
                 </Link>
               </li>
               <li>
-                <Link href="/health-analysis/history" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link 
+                  href="/health-analysis/history" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/health-analysis/history') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">📈</span>
                   History
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/settings" className="flex items-center px-6 py-3 text-white hover:bg-green-600">
+                <Link 
+                  href="/dashboard/profile" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/dashboard/profile') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
+                  <span className="mr-3">👤</span>
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/dashboard/settings" 
+                  className={`flex items-center px-6 py-3 text-white ${
+                    isActive('/dashboard/settings') ? 'bg-green-600' : 'hover:bg-green-600'
+                  }`}
+                >
                   <span className="mr-3">⚙️</span>
                   Settings
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="flex items-center px-6 py-3 text-white hover:bg-red-600">
+                  <span className="mr-3">🚪</span>
+                  Log Out
                 </Link>
               </li>
             </ul>
