@@ -20,6 +20,8 @@ export default function SignUp() {
       return;
     }
     console.log('Sign up:', formData);
+    // After successful sign up, redirect to dashboard
+    window.location.href = '/dashboard';
   };
 
   return (

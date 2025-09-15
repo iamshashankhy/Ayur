@@ -38,7 +38,7 @@ export default function ConstitutionSection() {
 
         <div className="text-center">
           <button className="bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition-colors font-medium text-lg">
-            <a href="/health-analysis">Start your Analysis</a>
+            <a href="/auth/signin">Start your Analysis</a>
           </button>
         </div>
       </div>

@@ -13,6 +13,8 @@ export default function SignIn() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Sign in:', formData);
+    // After successful sign in, redirect to dashboard
+    window.location.href = '/dashboard';
   };
 
   return (
