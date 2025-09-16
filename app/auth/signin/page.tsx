@@ -13,8 +13,20 @@ export default function SignIn() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Sign in:', formData);
-    // After successful sign in, redirect to dashboard
-    window.location.href = '/dashboard';
+    
+    // Simulate authentication
+    if (formData.username && formData.password) {
+      // Store user session
+      localStorage.setItem('userSession', JSON.stringify({
+        username: formData.username,
+        loginTime: new Date().toISOString()
+      }));
+      
+      // Redirect to dashboard
+      window.location.href = '/dashboard';
+    } else {
+      alert('Please enter both username and password');
+    }
   };
 
   return (

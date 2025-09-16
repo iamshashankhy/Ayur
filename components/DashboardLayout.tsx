@@ -1,9 +1,10 @@
 "use client";
+"use client";
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Bell, Settings, User, Home } from 'lucide-react';
+import { Bell, Settings, User, Home, LogOut } from 'lucide-react';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,6 +13,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return pathname === path;
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('userSession');
+    localStorage.removeItem('userProfile');
+    localStorage.removeItem('assessmentResults');
+    window.location.href = '/';
+  };
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f0f9f0' }}>
       {/* Top Header */}
@@ -32,6 +39,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Link href="/dashboard/profile">
               <User className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
             </Link>
+            <button onClick={handleLogout}>
+              <LogOut className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
+            </button>
           </div>
         </div>
       </header>
@@ -138,10 +148,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </Link>
               </li>
               <li>
-                <Link href="/" className="flex items-center px-6 py-3 text-white hover:bg-red-600">
+                <button 
+                  onClick={handleLogout}
+                  className="w-full flex items-center px-6 py-3 text-white hover:bg-red-600"
+                >
                   <span className="mr-3">🚪</span>
                   Log Out
-                </Link>
+                </button>
               </li>
             </ul>
           </nav>

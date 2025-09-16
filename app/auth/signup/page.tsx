@@ -20,8 +20,27 @@ export default function SignUp() {
       return;
     }
     console.log('Sign up:', formData);
-    // After successful sign up, redirect to dashboard
-    window.location.href = '/dashboard';
+    
+    // Simulate registration
+    if (formData.fullName && formData.email && formData.password) {
+      // Store user data
+      localStorage.setItem('userProfile', JSON.stringify({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        registrationDate: new Date().toISOString()
+      }));
+      
+      localStorage.setItem('userSession', JSON.stringify({
+        username: formData.email,
+        loginTime: new Date().toISOString()
+      }));
+      
+      // Redirect to dashboard
+      window.location.href = '/dashboard';
+    } else {
+      alert('Please fill in all required fields');
+    }
   };
 
   return (

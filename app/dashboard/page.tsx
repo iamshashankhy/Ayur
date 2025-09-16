@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import DashboardLayout from '@/components/DashboardLayout';
 
 interface AssessmentResults {
@@ -16,8 +17,24 @@ interface AssessmentResults {
 export default function Dashboard() {
   const [results, setResults] = useState<AssessmentResults | null>(null);
   const [hasAssessment, setHasAssessment] = useState(false);
+  const [userName, setUserName] = useState('User');
+  const router = useRouter();
 
   useEffect(() => {
+    // Check authentication
+    const userSession = localStorage.getItem('userSession');
+    if (!userSession) {
+      router.push('/auth/signin');
+      return;
+    }
+
+    // Get user profile
+    const userProfile = localStorage.getItem('userProfile');
+    if (userProfile) {
+      const profile = JSON.parse(userProfile);
+      setUserName(profile.fullName?.split(' ')[0] || 'User');
+    }
+
     const savedResults = localStorage.getItem('assessmentResults');
     if (savedResults) {
       setResults(JSON.parse(savedResults));
@@ -155,7 +172,7 @@ export default function Dashboard() {
         <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome back, Sarah!</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome back, {userName}!</h2>
               <p className="text-gray-600">Your {primaryDosha} constitution is looking balanced today</p>
             </div>
             <div className="text-right">

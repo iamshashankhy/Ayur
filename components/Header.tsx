@@ -23,9 +23,12 @@ export default function Header() {
           <Link href="/features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
           <Link href="/how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
           <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
-          <Link href="/auth/signin" className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium">
+          <button 
+            onClick={() => window.location.href = '/auth/signin'}
+            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium"
+          >
             SignIn/SignUp
-          </Link>
+          </button>
         </nav>
 
         <button 
@@ -44,9 +47,12 @@ export default function Header() {
             <Link href="/features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
             <Link href="/how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
             <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
-            <Link href="/auth/signin" className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium w-fit">
+            <button 
+              onClick={() => window.location.href = '/auth/signin'}
+              className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium w-fit"
+            >
               SignIn/SignUp
-            </Link>
+            </button>
           </nav>
         </div>
       )}
