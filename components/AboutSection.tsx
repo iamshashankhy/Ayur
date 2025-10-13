@@ -1,6 +1,6 @@
 export default function AboutSection() {
   return (
-    <section id="about" className="py-16 px-6 bg-white">
+    <section id="about" className="py-16 px-6 bg-gradient-to-br from-green-50 to-blue-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">
@@ -13,7 +13,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="mb-12">
+        <div className="mb-12 bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             AI-Enhanced Analysis
           </h3>
@@ -23,7 +23,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="mb-12">
+        <div className="mb-12 bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Preventive Healthcare
           </h3>
@@ -33,7 +33,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="bg-red-100 border-l-4 border-red-500 p-6 rounded-lg">
+        <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg shadow-md">
           <h4 className="text-lg font-bold text-red-800 mb-2">Important Disclaimer</h4>
           <p className="text-red-700 text-sm leading-relaxed">
             This system is for educational purposes only and is not intended to replace professional medical advice. 

@@ -18,14 +18,29 @@ export default function Header() {
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="text-gray-800 hover:text-gray-600 font-medium">Home</Link>
-          <Link href="/about" className="text-gray-800 hover:text-gray-600 font-medium">About</Link>
-          <Link href="/features" className="text-gray-800 hover:text-gray-600 font-medium">Features</Link>
-          <Link href="/how-it-works" className="text-gray-800 hover:text-gray-600 font-medium">How it works</Link>
-          <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-medium">Contact</Link>
+          <Link href="/" className="text-gray-800 hover:text-gray-600 font-medium transition-colors relative group">
+            Home
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
+          </Link>
+          <Link href="/about" className="text-gray-800 hover:text-gray-600 font-medium transition-colors relative group">
+            About
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
+          </Link>
+          <Link href="/features" className="text-gray-800 hover:text-gray-600 font-medium transition-colors relative group">
+            Features
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
+          </Link>
+          <Link href="/how-it-works" className="text-gray-800 hover:text-gray-600 font-medium transition-colors relative group">
+            How it works
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
+          </Link>
+          <Link href="/contact" className="text-gray-800 hover:text-gray-600 font-medium transition-colors relative group">
+            Contact
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
+          </Link>
           <button 
             onClick={() => window.location.href = '/auth/signin'}
-            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors font-medium"
+            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-all font-medium transform hover:scale-105 shadow-md hover:shadow-lg"
           >
             SignIn/SignUp
           </button>

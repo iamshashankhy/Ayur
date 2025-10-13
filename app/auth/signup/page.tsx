@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 
 export default function SignUp() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -12,17 +14,77 @@ export default function SignUp() {
     password: '',
     reenterPassword: ''
   });
+  const [errors, setErrors] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    password: '',
+    reenterPassword: ''
+  });
+
+  const validatePassword = (password: string) => {
+    const minLength = password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    
+    return {
+      minLength,
+      hasUpperCase,
+      hasLowerCase,
+      hasNumbers,
+      hasSpecialChar,
+      isValid: minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar
+    };
+  };
+
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePhone = (phone: string) => {
+    return /^[\+]?[1-9][\d]{0,15}$/.test(phone.replace(/\s/g, ''));
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const password = e.target.value;
+    setFormData({...formData, password});
+    
+    if (password) {
+      const validation = validatePassword(password);
+      if (!validation.isValid) {
+        setErrors({...errors, password: 'Password must meet all requirements'});
+      } else {
+        setErrors({...errors, password: ''});
+      }
+    } else {
+      setErrors({...errors, password: ''});
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.password !== formData.reenterPassword) {
-      alert('Passwords do not match');
-      return;
-    }
-    console.log('Sign up:', formData);
     
-    // Simulate registration
-    if (formData.fullName && formData.email && formData.password) {
+    // Validate form
+    const newErrors = {
+      fullName: !formData.fullName ? 'Full name is required' : '',
+      email: !formData.email ? 'Email is required' : !validateEmail(formData.email) ? 'Please enter a valid email' : '',
+      phone: !formData.phone ? 'Phone number is required' : !validatePhone(formData.phone) ? 'Please enter a valid phone number' : '',
+      password: !formData.password ? 'Password is required' : '',
+      reenterPassword: !formData.reenterPassword ? 'Please confirm your password' : formData.password !== formData.reenterPassword ? 'Passwords do not match' : ''
+    };
+    
+    if (formData.password) {
+      const validation = validatePassword(formData.password);
+      if (!validation.isValid) {
+        newErrors.password = 'Password must meet all requirements';
+      }
+    }
+    
+    setErrors(newErrors);
+    
+    if (!Object.values(newErrors).some(error => error)) {
       // Store user data
       localStorage.setItem('userProfile', JSON.stringify({
         fullName: formData.fullName,
@@ -38,8 +100,6 @@ export default function SignUp() {
       
       // Redirect to dashboard
       window.location.href = '/dashboard';
-    } else {
-      alert('Please fill in all required fields');
     }
   };
 
@@ -70,57 +130,123 @@ export default function SignUp() {
               placeholder="Full Name"
               value={formData.fullName}
               onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
+              className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                errors.fullName ? 'border-red-500' : 'border-gray-300'
+              }`}
               required
             />
+            {errors.fullName && <p className="text-red-500 text-sm text-center">{errors.fullName}</p>}
             
             <input
               type="email"
               placeholder="Email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
+              className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              }`}
               required
             />
+            {errors.email && <p className="text-red-500 text-sm text-center">{errors.email}</p>}
             
             <input
               type="tel"
               placeholder="Phone Number"
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
+              className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                errors.phone ? 'border-red-500' : 'border-gray-300'
+              }`}
               required
             />
+            {errors.phone && <p className="text-red-500 text-sm text-center">{errors.phone}</p>}
             
-            <input
-              type="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={(e) => setFormData({...formData, password: e.target.value})}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                value={formData.password}
+                onChange={handlePasswordChange}
+                className={`w-full px-4 py-3 pr-12 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                  errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+            {errors.password && <p className="text-red-500 text-sm text-center">{errors.password}</p>}
             
-            <input
-              type="password"
-              placeholder="Re-enter Password"
-              value={formData.reenterPassword}
-              onChange={(e) => setFormData({...formData, reenterPassword: e.target.value})}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
-              required
-            />
+            {formData.password && (
+              <div className="p-3 bg-gray-50 rounded-md">
+                <p className="text-xs text-gray-600 mb-2">Password Requirements:</p>
+                {(() => {
+                  const validation = validatePassword(formData.password);
+                  return (
+                    <div className="space-y-1 text-xs">
+                      <div className={`flex items-center ${validation.minLength ? 'text-green-600' : 'text-red-500'}`}>
+                        <span className="mr-2">{validation.minLength ? '✓' : '×'}</span>
+                        At least 8 characters
+                      </div>
+                      <div className={`flex items-center ${validation.hasUpperCase ? 'text-green-600' : 'text-red-500'}`}>
+                        <span className="mr-2">{validation.hasUpperCase ? '✓' : '×'}</span>
+                        One uppercase letter
+                      </div>
+                      <div className={`flex items-center ${validation.hasLowerCase ? 'text-green-600' : 'text-red-500'}`}>
+                        <span className="mr-2">{validation.hasLowerCase ? '✓' : '×'}</span>
+                        One lowercase letter
+                      </div>
+                      <div className={`flex items-center ${validation.hasNumbers ? 'text-green-600' : 'text-red-500'}`}>
+                        <span className="mr-2">{validation.hasNumbers ? '✓' : '×'}</span>
+                        One number
+                      </div>
+                      <div className={`flex items-center ${validation.hasSpecialChar ? 'text-green-600' : 'text-red-500'}`}>
+                        <span className="mr-2">{validation.hasSpecialChar ? '✓' : '×'}</span>
+                        One special character
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+            
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Re-enter Password"
+                value={formData.reenterPassword}
+                onChange={(e) => setFormData({...formData, reenterPassword: e.target.value})}
+                className={`w-full px-4 py-3 pr-12 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                  errors.reenterPassword ? 'border-red-500' : 'border-gray-300'
+                }`}
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+            {errors.reenterPassword && <p className="text-red-500 text-sm text-center">{errors.reenterPassword}</p>}
 
             <button
               type="submit"
               className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors font-medium mt-6"
             >
-              Sign In
+              Sign Up
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600 mb-4">
-              Already have an account? <Link href="/auth/signin" className="text-green-600 hover:text-green-800 font-medium">Sign Up</Link>
+              Already have an account? <Link href="/auth/signin" className="text-green-600 hover:text-green-800 font-medium">Sign In</Link>
             </p>
             <p className="text-xs text-gray-500 mb-4">Sign In with Google</p>
             <button className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition-colors font-medium">

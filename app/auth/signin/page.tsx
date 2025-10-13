@@ -2,20 +2,71 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 
 export default function SignIn() {
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
+  const [errors, setErrors] = useState({
+    username: '',
+    password: ''
+  });
+
+  const validatePassword = (password: string) => {
+    const minLength = password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    
+    return {
+      minLength,
+      hasUpperCase,
+      hasLowerCase,
+      hasNumbers,
+      hasSpecialChar,
+      isValid: minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar
+    };
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const password = e.target.value;
+    setFormData({...formData, password});
+    
+    if (password) {
+      const validation = validatePassword(password);
+      if (!validation.isValid) {
+        setErrors({...errors, password: 'Password must meet all requirements'});
+      } else {
+        setErrors({...errors, password: ''});
+      }
+    } else {
+      setErrors({...errors, password: ''});
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Sign in:', formData);
     
-    // Simulate authentication
-    if (formData.username && formData.password) {
+    // Validate form
+    const newErrors = {
+      username: !formData.username ? 'Username/Email is required' : '',
+      password: !formData.password ? 'Password is required' : ''
+    };
+    
+    if (formData.password) {
+      const validation = validatePassword(formData.password);
+      if (!validation.isValid) {
+        newErrors.password = 'Password must meet all requirements';
+      }
+    }
+    
+    setErrors(newErrors);
+    
+    if (!newErrors.username && !newErrors.password) {
       // Store user session
       localStorage.setItem('userSession', JSON.stringify({
         username: formData.username,
@@ -24,8 +75,6 @@ export default function SignIn() {
       
       // Redirect to dashboard
       window.location.href = '/dashboard';
-    } else {
-      alert('Please enter both username and password');
     }
   };
 
@@ -57,20 +106,72 @@ export default function SignIn() {
                 placeholder="Username / Email"
                 value={formData.username}
                 onChange={(e) => setFormData({...formData, username: e.target.value})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
+                className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                  errors.username ? 'border-red-500' : 'border-gray-300'
+                }`}
                 required
               />
+              {errors.username && (
+                <p className="text-red-500 text-sm mt-1 text-center">{errors.username}</p>
+              )}
             </div>
             
-            <div>
+            <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={formData.password}
-                onChange={(e) => setFormData({...formData, password: e.target.value})}
-                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
+                onChange={handlePasswordChange}
+                className={`w-full px-4 py-3 pr-12 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                  errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
                 required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+              
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1 text-center">{errors.password}</p>
+              )}
+              
+              {formData.password && (
+                <div className="mt-2 p-3 bg-gray-50 rounded-md">
+                  <p className="text-xs text-gray-600 mb-2">Password Requirements:</p>
+                  {(() => {
+                    const validation = validatePassword(formData.password);
+                    return (
+                      <div className="space-y-1 text-xs">
+                        <div className={`flex items-center ${validation.minLength ? 'text-green-600' : 'text-red-500'}`}>
+                          <span className="mr-2">{validation.minLength ? '✓' : '×'}</span>
+                          At least 8 characters
+                        </div>
+                        <div className={`flex items-center ${validation.hasUpperCase ? 'text-green-600' : 'text-red-500'}`}>
+                          <span className="mr-2">{validation.hasUpperCase ? '✓' : '×'}</span>
+                          One uppercase letter
+                        </div>
+                        <div className={`flex items-center ${validation.hasLowerCase ? 'text-green-600' : 'text-red-500'}`}>
+                          <span className="mr-2">{validation.hasLowerCase ? '✓' : '×'}</span>
+                          One lowercase letter
+                        </div>
+                        <div className={`flex items-center ${validation.hasNumbers ? 'text-green-600' : 'text-red-500'}`}>
+                          <span className="mr-2">{validation.hasNumbers ? '✓' : '×'}</span>
+                          One number
+                        </div>
+                        <div className={`flex items-center ${validation.hasSpecialChar ? 'text-green-600' : 'text-red-500'}`}>
+                          <span className="mr-2">{validation.hasSpecialChar ? '✓' : '×'}</span>
+                          One special character
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
+              
               <div className="text-right mt-2">
                 <Link href="/auth/reset-password" className="text-sm text-green-600 hover:text-green-800">
                   Forgot Password?
