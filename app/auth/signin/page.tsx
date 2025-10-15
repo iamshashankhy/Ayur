@@ -84,8 +84,8 @@ export default function SignIn() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-orange-400 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">A</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-lg">🕉</span>
             </div>
             <span className="text-gray-800 font-semibold text-lg">AyurInsights</span>
           </div>

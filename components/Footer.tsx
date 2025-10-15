@@ -24,8 +24,8 @@ export default function Footer() {
 
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">A</span>
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold">🕉</span>
               </div>
               <span className="text-gray-800 font-semibold">AyurInsights</span>
             </div>

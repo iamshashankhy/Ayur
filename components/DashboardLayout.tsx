@@ -71,8 +71,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="w-64 min-h-screen" style={{ backgroundColor: '#2d5a3d' }}>
           <div className="p-6">
             <div className="flex items-center space-x-2 mb-8">
-              <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">A</span>
+              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold">🕉</span>
               </div>
               <span className="text-white font-semibold">AyurInsight</span>
             </div>
