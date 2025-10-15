@@ -79,25 +79,25 @@ export default function SignIn() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-green-300 to-green-400 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-r from-green-300 to-green-400 flex items-center justify-center px-4 sm:px-6">
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6 sm:mb-8">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-lg">🕉</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-base sm:text-lg">🕉</span>
             </div>
-            <span className="text-gray-800 font-semibold text-lg">AyurInsights</span>
+            <span className="text-gray-800 font-semibold text-base sm:text-lg">AyurInsights</span>
           </div>
-          <Link href="/" className="flex items-center space-x-2 text-gray-700 hover:text-gray-900">
-            <ArrowLeft size={20} />
-            <span className="font-medium">Go Back</span>
+          <Link href="/" className="flex items-center space-x-1 sm:space-x-2 text-gray-700 hover:text-gray-900">
+            <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
+            <span className="font-medium text-sm sm:text-base">Go Back</span>
           </Link>
         </div>
 
         {/* Sign In Form */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">Sign In</h2>
+        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-800 mb-6 sm:mb-8">Sign In</h2>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -106,13 +106,13 @@ export default function SignIn() {
                 placeholder="Username / Email"
                 value={formData.username}
                 onChange={(e) => setFormData({...formData, username: e.target.value})}
-                className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center ${
+                className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent text-center text-sm sm:text-base ${
                   errors.username ? 'border-red-500' : 'border-gray-300'
                 }`}
                 required
               />
               {errors.username && (
-                <p className="text-red-500 text-sm mt-1 text-center">{errors.username}</p>
+                <p className="text-red-500 text-xs sm:text-sm mt-1 text-center">{errors.username}</p>
               )}
             </div>
             

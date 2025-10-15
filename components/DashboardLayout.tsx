@@ -22,42 +22,42 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f0f9f0' }}>
       {/* Top Header */}
-      <header className="bg-white shadow-sm border-b px-6 py-4">
+      <header className="bg-white shadow-sm border-b px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
-            <p className="text-sm text-gray-600">Discover your Ayurvedic body constitution</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Dashboard</h1>
+            <p className="text-xs sm:text-sm text-gray-600 hidden sm:block">Discover your Ayurvedic body constitution</p>
           </div>
           <div className="flex items-center space-x-4">
             <Link href="/" title="Home" className="group relative">
-              <Home className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
+              <Home className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Home
               </div>
             </Link>
             <div className="group relative">
-              <Bell className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
+              <Bell className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Notifications
               </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs">3</span>
+              <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs hidden sm:inline">3</span>
               </div>
             </div>
             <Link href="/dashboard/settings" title="Settings" className="group relative">
-              <Settings className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
+              <Settings className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Settings
               </div>
             </Link>
             <Link href="/dashboard/profile" title="Profile" className="group relative">
-              <User className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
+              <User className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-gray-800 cursor-pointer transition-colors" />
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Profile
               </div>
             </Link>
             <button onClick={handleLogout} title="Logout" className="group relative">
-              <LogOut className="w-6 h-6 text-gray-600 hover:text-red-600 cursor-pointer transition-colors" />
+              <LogOut className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-red-600 cursor-pointer transition-colors" />
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Logout
               </div>
@@ -68,26 +68,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-64 min-h-screen" style={{ backgroundColor: '#2d5a3d' }}>
-          <div className="p-6">
+        <div className="w-16 sm:w-64 min-h-screen" style={{ backgroundColor: '#2d5a3d' }}>
+          <div className="p-4 sm:p-6">
             <div className="flex items-center space-x-2 mb-8">
-              <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold">🕉</span>
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-sm sm:text-base">🕉</span>
               </div>
-              <span className="text-white font-semibold">AyurInsight</span>
+              <span className="text-white font-semibold hidden sm:block">AyurInsight</span>
             </div>
           </div>
-          <nav className="py-6">
+          <nav className="py-4 sm:py-6">
             <ul className="space-y-2">
               <li>
                 <Link 
                   href="/dashboard" 
-                  className={`flex items-center px-6 py-3 text-white font-medium transition-colors ${
+                  className={`flex items-center px-3 sm:px-6 py-3 text-white font-medium transition-colors ${
                     isActive('/dashboard') ? 'bg-green-600 border-r-4 border-green-400' : 'hover:bg-green-600 hover:bg-opacity-50'
                   }`}
                 >
-                  <span className="mr-3">📊</span>
-                  Dashboard
+                  <span className="mr-0 sm:mr-3">📊</span>
+                  <span className="hidden sm:inline">Dashboard</span>
                 </Link>
               </li>
               <li>
