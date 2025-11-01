@@ -1,3 +1,5 @@
+"use client";
+
 import { useLanguage } from '@/lib/contexts/LanguageContext';
 import { useTheme } from '@/lib/contexts/ThemeContext';
 
