@@ -1,0 +1,264 @@
+"use client";
+
+import { useState, useRef, useEffect } from 'react';
+import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2 } from 'lucide-react';
+
+interface Message {
+  id: string;
+  text: string;
+  sender: 'user' | 'ai';
+  timestamp: Date;
+}
+
+export default function AIChatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      text: 'Namaste! 🙏 I\'m your Ayurvedic AI assistant. I can help you with questions about doshas, wellness tips, diet recommendations, and your health journey. How can I assist you today?',
+      sender: 'ai',
+      timestamp: new Date()
+    }
+  ]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const getAIResponse = (userMessage: string): string => {
+    const message = userMessage.toLowerCase();
+    
+    // Ayurvedic knowledge base responses
+    if (message.includes('vata') || message.includes('वात')) {
+      return 'Vata dosha governs movement and is composed of air and space elements. When balanced, it promotes creativity and vitality. To balance Vata: eat warm, cooked foods, maintain regular routines, practice gentle yoga, and get adequate rest. Avoid cold, dry, and raw foods.';
+    }
+    
+    if (message.includes('pitta') || message.includes('पित्त')) {
+      return 'Pitta dosha controls digestion and metabolism, composed of fire and water elements. When balanced, it promotes intelligence and good digestion. To balance Pitta: eat cooling foods, avoid spicy and acidic foods, practice moderate exercise, and manage stress. Stay cool and calm.';
+    }
+    
+    if (message.includes('kapha') || message.includes('कफ')) {
+      return 'Kapha dosha provides structure and immunity, composed of earth and water elements. When balanced, it promotes strength and stability. To balance Kapha: eat light, warm foods, engage in vigorous exercise, avoid heavy and oily foods, and maintain an active lifestyle.';
+    }
+    
+    if (message.includes('diet') || message.includes('food') || message.includes('eat')) {
+      return 'Ayurvedic diet principles: Eat according to your dosha, include all 6 tastes (sweet, sour, salty, pungent, bitter, astringent), eat your largest meal at lunch when digestive fire is strongest, avoid cold drinks with meals, and eat in a peaceful environment.';
+    }
+    
+    if (message.includes('stress') || message.includes('anxiety') || message.includes('mental')) {
+      return 'For mental wellness in Ayurveda: Practice daily meditation, follow a regular routine, use calming herbs like Brahmi and Ashwagandha, practice pranayama (breathing exercises), get adequate sleep, and maintain work-life balance. Consider abhyanga (oil massage) for relaxation.';
+    }
+    
+    if (message.includes('sleep') || message.includes('insomnia')) {
+      return 'Ayurvedic sleep tips: Maintain regular sleep schedule, avoid screens before bed, practice gentle yoga or meditation, drink warm milk with turmeric, massage feet with warm oil, keep bedroom cool and dark, and avoid heavy meals before sleep.';
+    }
+    
+    if (message.includes('digestion') || message.includes('stomach') || message.includes('bloating')) {
+      return 'For healthy digestion: Eat at regular times, chew food thoroughly, avoid drinking large amounts of water with meals, use digestive spices like ginger and cumin, practice mindful eating, and take a short walk after meals. Consider triphala for digestive health.';
+    }
+    
+    if (message.includes('yoga') || message.includes('exercise')) {
+      return 'Ayurvedic exercise guidelines: Vata types should do gentle, grounding exercises like walking and restorative yoga. Pitta types benefit from moderate, cooling activities like swimming. Kapha types need vigorous, energizing exercises like running and power yoga.';
+    }
+    
+    if (message.includes('season') || message.includes('weather')) {
+      return 'Seasonal Ayurvedic living: Spring (Kapha season) - detox and energize. Summer (Pitta season) - stay cool and calm. Fall/Winter (Vata season) - warm, nourishing foods and routines. Adjust your diet, lifestyle, and practices according to the season.';
+    }
+    
+    if (message.includes('herbs') || message.includes('medicine')) {
+      return 'Common Ayurvedic herbs: Ashwagandha for stress and energy, Turmeric for inflammation, Triphala for digestion, Brahmi for mental clarity, Neem for skin health, and Tulsi for immunity. Always consult with an Ayurvedic practitioner before starting herbs.';
+    }
+    
+    if (message.includes('constitution') || message.includes('assessment')) {
+      return 'Your Ayurvedic constitution (Prakriti) is your natural state determined at birth. Take our comprehensive assessment to discover your unique dosha combination. This helps create personalized recommendations for diet, lifestyle, and wellness practices.';
+    }
+    
+    if (message.includes('hello') || message.includes('hi') || message.includes('namaste')) {
+      return 'Namaste! 🙏 Welcome to your Ayurvedic wellness journey. I\'m here to guide you with ancient wisdom and modern insights. What would you like to know about Ayurveda, doshas, or your health?';
+    }
+    
+    if (message.includes('thank') || message.includes('thanks')) {
+      return 'You\'re most welcome! 🙏 I\'m here whenever you need guidance on your wellness journey. Remember, small consistent steps lead to lasting health. Take care and stay balanced!';
+    }
+    
+    // Default response
+    return 'That\'s an interesting question about Ayurveda! While I have knowledge about doshas, diet, lifestyle, and wellness practices, I\'d recommend consulting with a qualified Ayurvedic practitioner for personalized advice. Is there something specific about Ayurveda, doshas, or wellness you\'d like to know more about?';
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim()) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: inputMessage,
+      sender: 'user',
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage]);
+    setInputMessage('');
+    setIsTyping(true);
+
+    // Simulate AI thinking time
+    setTimeout(() => {
+      const aiResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: getAIResponse(inputMessage),
+        sender: 'ai',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, aiResponse]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  return (
+    <>
+      {/* Chat Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110 z-50 flex items-center justify-center group"
+        >
+          <div className="relative">
+            <Bot className="w-8 h-8" />
+            <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+          </div>
+          <div className="absolute -top-12 right-0 bg-gray-800 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            Ask AI Assistant
+          </div>
+        </button>
+      )}
+
+      {/* Chat Window */}
+      {isOpen && (
+        <div className={`fixed bottom-6 right-6 w-96 bg-white rounded-2xl shadow-2xl z-50 border border-gray-200 transition-all duration-300 ${
+          isMinimized ? 'h-16' : 'h-[500px]'
+        }`}>
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-t-2xl">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                <Bot className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Ayur AI Assistant</h3>
+                <p className="text-xs opacity-90">Your wellness guide</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setIsMinimized(!isMinimized)}
+                className="p-1 hover:bg-white hover:bg-opacity-20 rounded transition-colors"
+              >
+                {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+              </button>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-1 hover:bg-white hover:bg-opacity-20 rounded transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {!isMinimized && (
+            <>
+              {/* Messages */}
+              <div className="flex-1 p-4 h-80 overflow-y-auto space-y-4">
+                {messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div className={`flex items-start space-x-2 max-w-[80%] ${
+                      message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''
+                    }`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        message.sender === 'user' 
+                          ? 'bg-blue-500 text-white' 
+                          : 'bg-green-500 text-white'
+                      }`}>
+                        {message.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                      </div>
+                      <div className={`p-3 rounded-2xl ${
+                        message.sender === 'user'
+                          ? 'bg-blue-500 text-white rounded-br-md'
+                          : 'bg-gray-100 text-gray-800 rounded-bl-md'
+                      }`}>
+                        <p className="text-sm leading-relaxed">{message.text}</p>
+                        <p className={`text-xs mt-1 ${
+                          message.sender === 'user' ? 'text-blue-100' : 'text-gray-500'
+                        }`}>
+                          {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                
+                {isTyping && (
+                  <div className="flex justify-start">
+                    <div className="flex items-start space-x-2">
+                      <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center">
+                        <Bot className="w-4 h-4" />
+                      </div>
+                      <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-md">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Input */}
+              <div className="p-4 border-t border-gray-200">
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="text"
+                    value={inputMessage}
+                    onChange={(e) => setInputMessage(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Ask about doshas, diet, wellness..."
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+                  />
+                  <button
+                    onClick={handleSendMessage}
+                    disabled={!inputMessage.trim() || isTyping}
+                    className="w-10 h-10 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  AI responses are for educational purposes only. Consult healthcare professionals for medical advice.
+                </p>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
