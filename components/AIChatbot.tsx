@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2 } from 'lucide-react';
+import { MessageCircle, X, Send, User, Minimize2, Maximize2 } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -137,7 +137,22 @@ export default function AIChatbot() {
           className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110 z-50 flex items-center justify-center group"
         >
           <div className="relative">
-            <Bot className="w-8 h-8" />
+            <div className="w-8 h-8 flex items-center justify-center">
+              {/* 2D AI Person Symbol */}
+              <svg viewBox="0 0 32 32" className="w-8 h-8 text-white" fill="currentColor">
+                {/* Head */}
+                <circle cx="16" cy="8" r="4" />
+                {/* Body */}
+                <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
+                {/* AI Brain Pattern */}
+                <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
+                <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
+                <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
+                {/* Arms */}
+                <rect x="8" y="16" width="3" height="8" rx="1.5" />
+                <rect x="21" y="16" width="3" height="8" rx="1.5" />
+              </svg>
+            </div>
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
           </div>
           <div className="absolute -top-12 right-0 bg-gray-800 text-white px-3 py-1 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
@@ -154,8 +169,21 @@ export default function AIChatbot() {
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-t-2xl">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <Bot className="w-6 h-6" />
+              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center p-1">
+                {/* 2D AI Person Symbol for Header */}
+                <svg viewBox="0 0 32 32" className="w-6 h-6 text-white" fill="currentColor">
+                  {/* Head */}
+                  <circle cx="16" cy="8" r="4" />
+                  {/* Body */}
+                  <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
+                  {/* AI Brain Pattern */}
+                  <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
+                  <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
+                  <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
+                  {/* Arms */}
+                  <rect x="8" y="16" width="3" height="8" rx="1.5" />
+                  <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                </svg>
               </div>
               <div>
                 <h3 className="font-semibold">Ayur AI Assistant</h3>
@@ -195,7 +223,23 @@ export default function AIChatbot() {
                           ? 'bg-blue-500 text-white' 
                           : 'bg-green-500 text-white'
                       }`}>
-                        {message.sender === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                        {message.sender === 'user' ? (
+                          <User className="w-4 h-4" />
+                        ) : (
+                          <svg viewBox="0 0 32 32" className="w-4 h-4 text-white" fill="currentColor">
+                            {/* Head */}
+                            <circle cx="16" cy="8" r="4" />
+                            {/* Body */}
+                            <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
+                            {/* AI Brain Pattern */}
+                            <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
+                            <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
+                            <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
+                            {/* Arms */}
+                            <rect x="8" y="16" width="3" height="8" rx="1.5" />
+                            <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                          </svg>
+                        )}
                       </div>
                       <div className={`p-3 rounded-2xl ${
                         message.sender === 'user'
@@ -216,8 +260,20 @@ export default function AIChatbot() {
                 {isTyping && (
                   <div className="flex justify-start">
                     <div className="flex items-start space-x-2">
-                      <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center">
-                        <Bot className="w-4 h-4" />
+                      <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center p-1">
+                        <svg viewBox="0 0 32 32" className="w-4 h-4 text-white" fill="currentColor">
+                          {/* Head */}
+                          <circle cx="16" cy="8" r="4" />
+                          {/* Body */}
+                          <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
+                          {/* AI Brain Pattern */}
+                          <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
+                          <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
+                          <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
+                          {/* Arms */}
+                          <rect x="8" y="16" width="3" height="8" rx="1.5" />
+                          <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                        </svg>
                       </div>
                       <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-md">
                         <div className="flex space-x-1">
