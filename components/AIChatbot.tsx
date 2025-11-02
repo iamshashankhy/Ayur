@@ -138,19 +138,26 @@ export default function AIChatbot() {
         >
           <div className="relative">
             <div className="w-8 h-8 flex items-center justify-center">
-              {/* 2D AI Person Symbol */}
+              {/* Robot Symbol */}
               <svg viewBox="0 0 32 32" className="w-8 h-8 text-white" fill="currentColor">
-                {/* Head */}
-                <circle cx="16" cy="8" r="4" />
-                {/* Body */}
-                <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
-                {/* AI Brain Pattern */}
-                <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
-                <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
-                <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
-                {/* Arms */}
-                <rect x="8" y="16" width="3" height="8" rx="1.5" />
-                <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                {/* Robot Head */}
+                <rect x="10" y="6" width="12" height="10" rx="2" />
+                {/* Robot Eyes */}
+                <circle cx="13" cy="10" r="1.5" fill="#00ff88" />
+                <circle cx="19" cy="10" r="1.5" fill="#00ff88" />
+                {/* Robot Mouth */}
+                <rect x="14" y="13" width="4" height="1" rx="0.5" />
+                {/* Robot Body */}
+                <rect x="12" y="18" width="8" height="8" rx="1" />
+                {/* Robot Arms */}
+                <rect x="8" y="20" width="3" height="4" rx="1.5" />
+                <rect x="21" y="20" width="3" height="4" rx="1.5" />
+                {/* Robot Legs */}
+                <rect x="13" y="27" width="2" height="3" rx="1" />
+                <rect x="17" y="27" width="2" height="3" rx="1" />
+                {/* Antenna */}
+                <line x1="16" y1="6" x2="16" y2="4" stroke="currentColor" strokeWidth="1" />
+                <circle cx="16" cy="3" r="1" />
               </svg>
             </div>
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
@@ -170,19 +177,26 @@ export default function AIChatbot() {
           <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-t-2xl">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center p-1">
-                {/* 2D AI Person Symbol for Header */}
+                {/* Robot Symbol for Header */}
                 <svg viewBox="0 0 32 32" className="w-6 h-6 text-white" fill="currentColor">
-                  {/* Head */}
-                  <circle cx="16" cy="8" r="4" />
-                  {/* Body */}
-                  <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
-                  {/* AI Brain Pattern */}
-                  <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
-                  <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
-                  <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
-                  {/* Arms */}
-                  <rect x="8" y="16" width="3" height="8" rx="1.5" />
-                  <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                  {/* Robot Head */}
+                  <rect x="10" y="6" width="12" height="10" rx="2" />
+                  {/* Robot Eyes */}
+                  <circle cx="13" cy="10" r="1.5" fill="#00ff88" />
+                  <circle cx="19" cy="10" r="1.5" fill="#00ff88" />
+                  {/* Robot Mouth */}
+                  <rect x="14" y="13" width="4" height="1" rx="0.5" />
+                  {/* Robot Body */}
+                  <rect x="12" y="18" width="8" height="8" rx="1" />
+                  {/* Robot Arms */}
+                  <rect x="8" y="20" width="3" height="4" rx="1.5" />
+                  <rect x="21" y="20" width="3" height="4" rx="1.5" />
+                  {/* Robot Legs */}
+                  <rect x="13" y="27" width="2" height="3" rx="1" />
+                  <rect x="17" y="27" width="2" height="3" rx="1" />
+                  {/* Antenna */}
+                  <line x1="16" y1="6" x2="16" y2="4" stroke="currentColor" strokeWidth="1" />
+                  <circle cx="16" cy="3" r="1" />
                 </svg>
               </div>
               <div>
@@ -227,17 +241,24 @@ export default function AIChatbot() {
                           <User className="w-4 h-4" />
                         ) : (
                           <svg viewBox="0 0 32 32" className="w-4 h-4 text-white" fill="currentColor">
-                            {/* Head */}
-                            <circle cx="16" cy="8" r="4" />
-                            {/* Body */}
-                            <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
-                            {/* AI Brain Pattern */}
-                            <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
-                            <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
-                            <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
-                            {/* Arms */}
-                            <rect x="8" y="16" width="3" height="8" rx="1.5" />
-                            <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                            {/* Robot Head */}
+                            <rect x="10" y="6" width="12" height="10" rx="2" />
+                            {/* Robot Eyes */}
+                            <circle cx="13" cy="10" r="1.5" fill="#00ff88" />
+                            <circle cx="19" cy="10" r="1.5" fill="#00ff88" />
+                            {/* Robot Mouth */}
+                            <rect x="14" y="13" width="4" height="1" rx="0.5" />
+                            {/* Robot Body */}
+                            <rect x="12" y="18" width="8" height="8" rx="1" />
+                            {/* Robot Arms */}
+                            <rect x="8" y="20" width="3" height="4" rx="1.5" />
+                            <rect x="21" y="20" width="3" height="4" rx="1.5" />
+                            {/* Robot Legs */}
+                            <rect x="13" y="27" width="2" height="3" rx="1" />
+                            <rect x="17" y="27" width="2" height="3" rx="1" />
+                            {/* Antenna */}
+                            <line x1="16" y1="6" x2="16" y2="4" stroke="currentColor" strokeWidth="1" />
+                            <circle cx="16" cy="3" r="1" />
                           </svg>
                         )}
                       </div>
@@ -262,17 +283,24 @@ export default function AIChatbot() {
                     <div className="flex items-start space-x-2">
                       <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center p-1">
                         <svg viewBox="0 0 32 32" className="w-4 h-4 text-white" fill="currentColor">
-                          {/* Head */}
-                          <circle cx="16" cy="8" r="4" />
-                          {/* Body */}
-                          <path d="M16 14c-4 0-7 2-7 4v8c0 1 1 2 2 2h10c1 0 2-1 2-2v-8c0-2-3-4-7-4z" />
-                          {/* AI Brain Pattern */}
-                          <circle cx="14" cy="7" r="0.8" fill="#00ff88" />
-                          <circle cx="18" cy="7" r="0.8" fill="#00ff88" />
-                          <path d="M13 9h6" stroke="#00ff88" strokeWidth="0.5" fill="none" />
-                          {/* Arms */}
-                          <rect x="8" y="16" width="3" height="8" rx="1.5" />
-                          <rect x="21" y="16" width="3" height="8" rx="1.5" />
+                          {/* Robot Head */}
+                          <rect x="10" y="6" width="12" height="10" rx="2" />
+                          {/* Robot Eyes */}
+                          <circle cx="13" cy="10" r="1.5" fill="#00ff88" />
+                          <circle cx="19" cy="10" r="1.5" fill="#00ff88" />
+                          {/* Robot Mouth */}
+                          <rect x="14" y="13" width="4" height="1" rx="0.5" />
+                          {/* Robot Body */}
+                          <rect x="12" y="18" width="8" height="8" rx="1" />
+                          {/* Robot Arms */}
+                          <rect x="8" y="20" width="3" height="4" rx="1.5" />
+                          <rect x="21" y="20" width="3" height="4" rx="1.5" />
+                          {/* Robot Legs */}
+                          <rect x="13" y="27" width="2" height="3" rx="1" />
+                          <rect x="17" y="27" width="2" height="3" rx="1" />
+                          {/* Antenna */}
+                          <line x1="16" y1="6" x2="16" y2="4" stroke="currentColor" strokeWidth="1" />
+                          <circle cx="16" cy="3" r="1" />
                         </svg>
                       </div>
                       <div className="bg-gray-100 p-3 rounded-2xl rounded-bl-md">
