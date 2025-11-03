@@ -12,7 +12,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <header className="bg-gradient-to-r from-green-50 to-emerald-50 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 shadow-sm border-b border-green-100 dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -29,31 +29,31 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               href="/" 
-              className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="text-green-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition-colors font-medium"
             >
               {t('home')}
             </Link>
             <Link 
               href="/features" 
-              className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="text-green-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition-colors font-medium"
             >
               {t('features')}
             </Link>
             <Link 
               href="/how-it-works" 
-              className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="text-green-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition-colors font-medium"
             >
               {t('howItWorks')}
             </Link>
             <Link 
               href="/about" 
-              className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="text-green-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition-colors font-medium"
             >
               {t('about')}
             </Link>
             <Link 
               href="/contact" 
-              className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+              className="text-green-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition-colors font-medium"
             >
               {t('contact')}
             </Link>
@@ -64,13 +64,13 @@ export default function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg bg-green-100 dark:bg-gray-800 hover:bg-green-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
                 <Sun className="w-5 h-5 text-yellow-500" />
               ) : (
-                <Moon className="w-5 h-5 text-gray-600" />
+                <Moon className="w-5 h-5 text-green-600" />
               )}
             </button>
 
@@ -78,7 +78,7 @@ export default function Header() {
             <div className="hidden md:flex items-center space-x-3">
               <Link
                 href="/auth/signin"
-                className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                className="px-4 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 dark:hover:text-green-400 transition-colors font-medium"
               >
                 {t('signIn')}
               </Link>
@@ -93,13 +93,13 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="md:hidden p-2 rounded-lg bg-green-100 dark:bg-gray-800 hover:bg-green-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <X className="w-5 h-5 text-green-600 dark:text-gray-300" />
               ) : (
-                <Menu className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                <Menu className="w-5 h-5 text-green-600 dark:text-gray-300" />
               )}
             </button>
           </div>
@@ -107,54 +107,54 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden py-4 border-t border-green-100 dark:border-gray-700 bg-green-25">
             <nav className="flex flex-col space-y-3">
               <Link 
                 href="/" 
-                className="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                className="px-3 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 hover:bg-green-100 dark:hover:text-green-400 transition-colors rounded-md mx-3 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('home')}
               </Link>
               <Link 
                 href="/features" 
-                className="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                className="px-3 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 hover:bg-green-100 dark:hover:text-green-400 transition-colors rounded-md mx-3 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('features')}
               </Link>
               <Link 
                 href="/how-it-works" 
-                className="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                className="px-3 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 hover:bg-green-100 dark:hover:text-green-400 transition-colors rounded-md mx-3 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('howItWorks')}
               </Link>
               <Link 
                 href="/about" 
-                className="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                className="px-3 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 hover:bg-green-100 dark:hover:text-green-400 transition-colors rounded-md mx-3 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('about')}
               </Link>
               <Link 
                 href="/contact" 
-                className="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                className="px-3 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 hover:bg-green-100 dark:hover:text-green-400 transition-colors rounded-md mx-3 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t('contact')}
               </Link>
-              <div className="flex flex-col space-y-2 pt-3 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex flex-col space-y-2 pt-3 border-t border-green-100 dark:border-gray-700 mx-3">
                 <Link
                   href="/auth/signin"
-                  className="px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                  className="px-3 py-2 text-green-700 dark:text-gray-300 hover:text-green-800 hover:bg-green-100 dark:hover:text-green-400 transition-colors rounded-md font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t('signIn')}
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="mx-3 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-md text-center"
+                  className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-md text-center font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t('getStarted')}
