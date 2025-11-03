@@ -25,15 +25,15 @@ export default function Hero() {
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-center sm:justify-start">
-        <div className="text-white max-w-2xl text-center sm:text-left">
+        <div className="text-white max-w-2xl text-center sm:text-left px-4 sm:px-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
             {t('heroTitle')}<br />
             {t('heroSubtitle')}
           </h1>
-          <p className="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90 px-4 sm:px-0">
+          <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90 leading-relaxed">
             {t('heroDescription')}
           </p>
-          <button className="bg-green-600 text-white px-6 sm:px-8 py-3 rounded-md hover:bg-green-700 transition-colors font-medium text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+          <button className="bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-md hover:bg-green-700 transition-all duration-300 font-medium text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto min-h-[48px]">
             <a href="/auth/signin" className="block">{t('startAnalysis')}</a>
           </button>
         </div>
