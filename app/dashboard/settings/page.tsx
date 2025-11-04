@@ -116,9 +116,7 @@ export default function Settings() {
                   onChange={(e) => setLanguage(e.target.value as any)}
                 >
                   <option value="english">English</option>
-                  <option value="hindi">हिंदी (Hindi)</option>
                   <option value="kannada">ಕನ್ನಡ (Kannada)</option>
-                  <option value="sanskrit">संस्कृत (Sanskrit)</option>
                 </select>
               </div>
             </div>
@@ -257,20 +255,13 @@ export default function Settings() {
         </div>
 
         {/* Language Preview */}
-        {language !== 'english' && (
+        {language === 'kannada' && (
           <div className="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded-lg p-4">
             <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">
-              {language === 'kannada' ? 'ಭಾಷೆ ಪೂರ್ವವೀಕ್ಷಣೆ' : 
-               language === 'hindi' ? 'भाषा पूर्वावलोकन' : 
-               'भाषा पूर्वावलोकन'}
+              ಭಾಷೆ ಪೂರ್ವವೀಕ್ಷಣೆ
             </h4>
             <p className="text-blue-700 dark:text-blue-300 text-sm">
-              {language === 'kannada' ? 
-                'ನಿಮ್ಮ ಭಾಷೆ ಸೆಟ್ಟಿಂಗ್ ಕನ್ನಡಕ್ಕೆ ಬದಲಾಯಿಸಲಾಗಿದೆ. ಸಂಪೂರ್ಣ ಅನುವಾದವು ಶೀಘ್ರದಲ್ಲೇ ಲಭ್ಯವಾಗುತ್ತದೆ.' :
-               language === 'hindi' ?
-                'आपकी भाषा सेटिंग हिंदी में बदल दी गई है। पूर्ण अनुवाद जल्द ही उपलब्ध होगा।' :
-                'आपकी भाषा सेटिंग संस्कृत में बदल दी गई है। पूर्ण अनुवाद जल्द ही उपलब्ध होगा।'
-              }
+              ನಿಮ್ಮ ಭಾಷೆ ಸೆಟ್ಟಿಂಗ್ ಕನ್ನಡಕ್ಕೆ ಬದಲಾಯಿಸಲಾಗಿದೆ. ಸಂಪೂರ್ಣ ಅಪ್ಲಿಕೇಶನ್ ಈಗ ಕನ್ನಡದಲ್ಲಿ ಲಭ್ಯವಿದೆ.
             </p>
           </div>
         )}

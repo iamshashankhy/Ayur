@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Language = 'english' | 'hindi' | 'kannada' | 'sanskrit';
+type Language = 'english' | 'kannada';
 
 interface LanguageContextType {
   language: Language;
@@ -18,7 +18,10 @@ const translations = {
     features: 'Features',
     howItWorks: 'How it works',
     contact: 'Contact',
-    signInSignUp: 'SignIn/SignUp',
+    signIn: 'Sign In',
+    signUp: 'Sign Up',
+    getStarted: 'Get Started',
+    ayurvedaAI: 'AyurInsights',
     
     // Hero Section
     heroTitle: 'Revolutionize your Health',
@@ -58,57 +61,25 @@ const translations = {
     cancel: 'Cancel',
     continue: 'Continue',
     back: 'Back',
-    next: 'Next'
-  },
-  
-  hindi: {
-    // Navigation
-    home: 'होम',
-    about: 'के बारे में',
-    features: 'विशेषताएं',
-    howItWorks: 'यह कैसे काम करता है',
-    contact: 'संपर्क',
-    signInSignUp: 'साइन इन/साइन अप',
+    next: 'Next',
     
-    // Hero Section
-    heroTitle: 'अपने स्वास्थ्य में क्रांति लाएं',
-    heroSubtitle: 'कल्याण और बुद्धिमत्ता के साथ',
-    heroDescription: 'कृत्रिम बुद्धिमत्ता द्वारा संचालित व्यक्तिगत आहार, जीवनशैली और कल्याण',
-    startAnalysis: 'स्वास्थ्य विश्लेषण शुरू करें',
-    
-    // Dashboard
-    dashboard: 'डैशबोर्ड',
-    profile: 'प्रोफ़ाइल',
-    settings: 'सेटिंग्स',
-    logout: 'लॉग आउट',
-    notifications: 'सूचनाएं',
-    
-    // Dosha Section
-    understandDosha: 'अपने दोष को समझें',
-    doshaDescription: 'उन तीन मौलिक ऊर्जाओं की खोज करें जो आपके शरीर, मन और चेतना को नियंत्रित करती हैं।',
-    vata: 'वात',
-    pitta: 'पित्त',
-    kapha: 'कफ',
-    
-    // Constitution Section
-    discoverConstitution: 'अपने आयुर्वेदिक संविधान की खोज करें',
-    constitutionDescription: 'AI-संचालित दोष विश्लेषण के माध्यम से अपने अनूठे शरीर-मन संविधान के रहस्यों को अनलॉक करें।',
-    
-    // Settings
-    appPreferences: 'ऐप प्राथमिकताएं',
-    darkMode: 'डार्क मोड',
-    darkModeDesc: 'डार्क थीम पर स्विच करें',
-    language: 'भाषा',
-    languageDesc: 'अपनी पसंदीदा भाषा चुनें',
-    
-    // Common
-    welcome: 'स्वागत है',
-    loading: 'लोड हो रहा है...',
-    save: 'सेव करें',
-    cancel: 'रद्द करें',
-    continue: 'जारी रखें',
-    back: 'वापस',
-    next: 'अगला'
+    // Additional translations
+    healthAnalysis: 'Health Analysis',
+    doshaAnalysis: 'Dosha Analysis',
+    personalizedRecommendations: 'Personalized Recommendations',
+    wellnessJourney: 'Wellness Journey',
+    constitution: 'Constitution',
+    balance: 'Balance',
+    assessment: 'Assessment',
+    results: 'Results',
+    recommendations: 'Recommendations',
+    diet: 'Diet',
+    lifestyle: 'Lifestyle',
+    yoga: 'Yoga',
+    meditation: 'Meditation',
+    wellness: 'Wellness',
+    health: 'Health',
+    ayurveda: 'Ayurveda'
   },
   
   kannada: {
@@ -118,7 +89,10 @@ const translations = {
     features: 'ವೈಶಿಷ್ಟ್ಯಗಳು',
     howItWorks: 'ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ',
     contact: 'ಸಂಪರ್ಕ',
-    signInSignUp: 'ಸೈನ್ ಇನ್/ಸೈನ್ ಅಪ್',
+    signIn: 'ಸೈನ್ ಇನ್',
+    signUp: 'ಸೈನ್ ಅಪ್',
+    getStarted: 'ಪ್ರಾರಂಭಿಸಿ',
+    ayurvedaAI: 'ಆಯುರ್‌ಇನ್‌ಸೈಟ್ಸ್',
     
     // Hero Section
     heroTitle: 'ನಿಮ್ಮ ಆರೋಗ್ಯದಲ್ಲಿ ಕ್ರಾಂತಿ ತನ್ನಿ',
@@ -158,57 +132,25 @@ const translations = {
     cancel: 'ರದ್ದುಮಾಡಿ',
     continue: 'ಮುಂದುವರಿಸಿ',
     back: 'ಹಿಂದೆ',
-    next: 'ಮುಂದೆ'
-  },
-  
-  sanskrit: {
-    // Navigation
-    home: 'गृहम्',
-    about: 'विषये',
-    features: 'विशेषताः',
-    howItWorks: 'कथं कार्यं करोति',
-    contact: 'सम्पर्कः',
-    signInSignUp: 'प्रवेशः/पञ्जीकरणम्',
+    next: 'ಮುಂದೆ',
     
-    // Hero Section
-    heroTitle: 'स्वास्थ्ये क्रान्तिं कुरुत',
-    heroSubtitle: 'कल्याणेन बुद्ध्या च',
-    heroDescription: 'कृत्रिमबुद्ध्या संचालितं व्यक्तिगतं भोजनं, जीवनशैली कल्याणं च',
-    startAnalysis: 'स्वास्थ्यविश्लेषणं प्रारभत',
-    
-    // Dashboard
-    dashboard: 'नियन्त्रणपट्टिका',
-    profile: 'व्यक्तिचित्रम्',
-    settings: 'व्यवस्थाः',
-    logout: 'निर्गमः',
-    notifications: 'सूचनाः',
-    
-    // Dosha Section
-    understandDosha: 'स्वदोषं बोधत',
-    doshaDescription: 'त्रीणि मूलभूतानि शक्तीनि यानि भवतः शरीरं मनः चेतना च नियन्त्रयन्ति तानि अन्वेषयत।',
-    vata: 'वातः',
-    pitta: 'पित्तम्',
-    kapha: 'कफः',
-    
-    // Constitution Section
-    discoverConstitution: 'स्वायुर्वेदिकसंविधानं अन्वेषयत',
-    constitutionDescription: 'AI-संचालितदोषविश्लेषणेन स्वस्य अनुपमस्य शरीरमनःसंविधानस्य रहस्यानि उद्घाटयत।',
-    
-    // Settings
-    appPreferences: 'अनुप्रयोगप्राथमिकताः',
-    darkMode: 'तमोमोडः',
-    darkModeDesc: 'तमोविषयकं रूपं स्वीकुरुत',
-    language: 'भाषा',
-    languageDesc: 'स्वप्रियभाषां चिनुत',
-    
-    // Common
-    welcome: 'स्वागतम्',
-    loading: 'लोड्यते...',
-    save: 'रक्षत',
-    cancel: 'रद्दं करोतु',
-    continue: 'अग्रे गच्छत',
-    back: 'पश्चात्',
-    next: 'अग्रिमम्'
+    // Additional translations
+    healthAnalysis: 'ಆರೋಗ್ಯ ವಿಶ್ಲೇಷಣೆ',
+    doshaAnalysis: 'ದೋಷ ವಿಶ್ಲೇಷಣೆ',
+    personalizedRecommendations: 'ವೈಯಕ್ತಿಕ ಶಿಫಾರಸುಗಳು',
+    wellnessJourney: 'ಆರೋಗ್ಯ ಪ್ರಯಾಣ',
+    constitution: 'ಸಂವಿಧಾನ',
+    balance: 'ಸಮತೋಲನ',
+    assessment: 'ಮೌಲ್ಯಮಾಪನ',
+    results: 'ಫಲಿತಾಂಶಗಳು',
+    recommendations: 'ಶಿಫಾರಸುಗಳು',
+    diet: 'ಆಹಾರ',
+    lifestyle: 'ಜೀವನಶೈಲಿ',
+    yoga: 'ಯೋಗ',
+    meditation: 'ಧ್ಯಾನ',
+    wellness: 'ಆರೋಗ್ಯ',
+    health: 'ಆರೋಗ್ಯ',
+    ayurveda: 'ಆಯುರ್ವೇದ'
   }
 };
 
@@ -239,7 +181,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     
     // Small delay to ensure state is updated
     setTimeout(() => {
-      alert(confirmations[newLanguage]);
+      // Show a subtle notification instead of alert
+      console.log(confirmations[newLanguage]);
     }, 100);
   };
 

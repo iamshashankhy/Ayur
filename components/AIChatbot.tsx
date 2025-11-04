@@ -38,15 +38,21 @@ export default function AIChatbot() {
     
     // Ayurvedic knowledge base responses
     if (message.includes('vata') || message.includes('वात')) {
-      return 'Vata dosha governs movement and is composed of air and space elements. When balanced, it promotes creativity and vitality. To balance Vata: eat warm, cooked foods, maintain regular routines, practice gentle yoga, and get adequate rest. Avoid cold, dry, and raw foods.';
+      return language === 'kannada' ? 
+        'ವಾತ ದೋಷವು ಚಲನೆಯನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ ಮತ್ತು ವಾಯು ಮತ್ತು ಆಕಾಶ ಅಂಶಗಳಿಂದ ಕೂಡಿದೆ. ಸಮತೋಲನದಲ್ಲಿದ್ದಾಗ, ಇದು ಸೃಜನಶೀಲತೆ ಮತ್ತು ಚೈತನ್ಯವನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ. ವಾತವನ್ನು ಸಮತೋಲನಗೊಳಿಸಲು: ಬೆಚ್ಚಗಿನ, ಬೇಯಿಸಿದ ಆಹಾರವನ್ನು ತಿನ್ನಿ, ನಿಯಮಿತ ದಿನಚರಿಯನ್ನು ಕಾಪಾಡಿ, ಸೌಮ್ಯ ಯೋಗವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ ಮತ್ತು ಸಾಕಷ್ಟು ವಿಶ್ರಾಂತಿ ಪಡೆಯಿರಿ.' :
+        'Vata dosha governs movement and is composed of air and space elements. When balanced, it promotes creativity and vitality. To balance Vata: eat warm, cooked foods, maintain regular routines, practice gentle yoga, and get adequate rest. Avoid cold, dry, and raw foods.';
     }
     
     if (message.includes('pitta') || message.includes('पित्त')) {
-      return 'Pitta dosha controls digestion and metabolism, composed of fire and water elements. When balanced, it promotes intelligence and good digestion. To balance Pitta: eat cooling foods, avoid spicy and acidic foods, practice moderate exercise, and manage stress. Stay cool and calm.';
+      return language === 'kannada' ? 
+        'ಪಿತ್ತ ದೋಷವು ಜೀರ್ಣಕ್ರಿಯೆ ಮತ್ತು ಚಯಾಪಚಯವನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ, ಅಗ್ನಿ ಮತ್ತು ಜಲ ಅಂಶಗಳಿಂದ ಕೂಡಿದೆ. ಸಮತೋಲನದಲ್ಲಿದ್ದಾಗ, ಇದು ಬುದ್ಧಿವಂತಿಕೆ ಮತ್ತು ಉತ್ತಮ ಜೀರ್ಣಕ್ರಿಯೆಯನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ. ಪಿತ್ತವನ್ನು ಸಮತೋಲನಗೊಳಿಸಲು: ತಂಪಾಗಿಸುವ ಆಹಾರವನ್ನು ತಿನ್ನಿ, ಮಸಾಲೆಯುಕ್ತ ಮತ್ತು ಆಮ್ಲೀಯ ಆಹಾರವನ್ನು ತಪ್ಪಿಸಿ, ಮಧ್ಯಮ ವ್ಯಾಯಾಮವನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ ಮತ್ತು ಒತ್ತಡವನ್ನು ನಿರ್ವಹಿಸಿ.' :
+        'Pitta dosha controls digestion and metabolism, composed of fire and water elements. When balanced, it promotes intelligence and good digestion. To balance Pitta: eat cooling foods, avoid spicy and acidic foods, practice moderate exercise, and manage stress. Stay cool and calm.';
     }
     
     if (message.includes('kapha') || message.includes('कफ')) {
-      return 'Kapha dosha provides structure and immunity, composed of earth and water elements. When balanced, it promotes strength and stability. To balance Kapha: eat light, warm foods, engage in vigorous exercise, avoid heavy and oily foods, and maintain an active lifestyle.';
+      return language === 'kannada' ? 
+        'ಕಫ ದೋಷವು ರಚನೆ ಮತ್ತು ರೋಗನಿರೋಧಕ ಶಕ್ತಿಯನ್ನು ಒದಗಿಸುತ್ತದೆ, ಭೂಮಿ ಮತ್ತು ಜಲ ಅಂಶಗಳಿಂದ ಕೂಡಿದೆ. ಸಮತೋಲನದಲ್ಲಿದ್ದಾಗ, ಇದು ಶಕ್ತಿ ಮತ್ತು ಸ್ಥಿರತೆಯನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ. ಕಫವನ್ನು ಸಮತೋಲನಗೊಳಿಸಲು: ಹಗುರವಾದ, ಬೆಚ್ಚಗಿನ ಆಹಾರವನ್ನು ತಿನ್ನಿ, ಹುರುಪಿನ ವ್ಯಾಯಾಮದಲ್ಲಿ ತೊಡಗಿಸಿಕೊಳ್ಳಿ, ಭಾರವಾದ ಮತ್ತು ಎಣ್ಣೆಯುಕ್ತ ಆಹಾರವನ್ನು ತಪ್ಪಿಸಿ ಮತ್ತು ಸಕ್ರಿಯ ಜೀವನಶೈಲಿಯನ್ನು ಕಾಪಾಡಿ.' :
+        'Kapha dosha provides structure and immunity, composed of earth and water elements. When balanced, it promotes strength and stability. To balance Kapha: eat light, warm foods, engage in vigorous exercise, avoid heavy and oily foods, and maintain an active lifestyle.';
     }
     
     if (message.includes('diet') || message.includes('food') || message.includes('eat')) {
@@ -82,7 +88,9 @@ export default function AIChatbot() {
     }
     
     if (message.includes('hello') || message.includes('hi') || message.includes('namaste')) {
-      return 'Namaste! 🙏 Welcome to your Ayurvedic wellness journey. I\'m here to guide you with ancient wisdom and modern insights. What would you like to know about Ayurveda, doshas, or your health?';
+      return language === 'kannada' ? 
+        'ನಮಸ್ತೆ! 🙏 ನಿಮ್ಮ ಆಯುರ್ವೇದಿಕ ಆರೋಗ್ಯ ಪ್ರಯಾಣಕ್ಕೆ ಸ್ವಾಗತ. ಪ್ರಾಚೀನ ಜ್ಞಾನ ಮತ್ತು ಆಧುನಿಕ ಒಳನೋಟಗಳೊಂದಿಗೆ ನಿಮಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಲು ನಾನು ಇಲ್ಲಿದ್ದೇನೆ. ಆಯುರ್ವೇದ, ದೋಷಗಳು ಅಥವಾ ನಿಮ್ಮ ಆರೋಗ್ಯದ ಬಗ್ಗೆ ನೀವು ಏನು ತಿಳಿದುಕೊಳ್ಳಲು ಬಯಸುತ್ತೀರಿ?' :
+        'Namaste! 🙏 Welcome to your Ayurvedic wellness journey. I\'m here to guide you with ancient wisdom and modern insights. What would you like to know about Ayurveda, doshas, or your health?';
     }
     
     if (message.includes('thank') || message.includes('thanks')) {
@@ -90,7 +98,9 @@ export default function AIChatbot() {
     }
     
     // Default response
-    return 'That\'s an interesting question about Ayurveda! While I have knowledge about doshas, diet, lifestyle, and wellness practices, I\'d recommend consulting with a qualified Ayurvedic practitioner for personalized advice. Is there something specific about Ayurveda, doshas, or wellness you\'d like to know more about?';
+    return language === 'kannada' ? 
+      'ಆಯುರ್ವೇದದ ಬಗ್ಗೆ ಆಸಕ್ತಿದಾಯಕ ಪ್ರಶ್ನೆ! ನನಗೆ ದೋಷಗಳು, ಆಹಾರ, ಜೀವನಶೈಲಿ ಮತ್ತು ಆರೋಗ್ಯ ಅಭ್ಯಾಸಗಳ ಬಗ್ಗೆ ಜ್ಞಾನವಿದ್ದರೂ, ವೈಯಕ್ತಿಕ ಸಲಹೆಗಾಗಿ ಅರ್ಹ ಆಯುರ್ವೇದ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಲು ನಾನು ಶಿಫಾರಸು ಮಾಡುತ್ತೇನೆ. ಆಯುರ್ವೇದ, ದೋಷಗಳು ಅಥವಾ ಆರೋಗ್ಯದ ಬಗ್ಗೆ ನೀವು ಹೆಚ್ಚು ತಿಳಿದುಕೊಳ್ಳಲು ಬಯಸುವ ನಿರ್ದಿಷ್ಟ ವಿಷಯವಿದೆಯೇ?' :
+      'That\'s an interesting question about Ayurveda! While I have knowledge about doshas, diet, lifestyle, and wellness practices, I\'d recommend consulting with a qualified Ayurvedic practitioner for personalized advice. Is there something specific about Ayurveda, doshas, or wellness you\'d like to know more about?';
   };
 
   const handleSendMessage = async () => {
