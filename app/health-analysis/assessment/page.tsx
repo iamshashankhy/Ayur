@@ -3,112 +3,114 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import DashboardLayout from '@/components/DashboardLayout';
+import { useLanguage } from '@/lib/contexts/LanguageContext';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 
 const questions = [
   {
     id: 1,
-    category: "Physical Constitution",
-    question: "How would you describe your body build?",
+    category: "physicalConstitution",
+    question: "bodyBuildQuestion",
     options: [
-      { text: "Thin, light frame, hard to gain weight", dosha: "vata", points: 3 },
-      { text: "Medium build, moderate weight", dosha: "pitta", points: 3 },
-      { text: "Large frame, easy to gain weight", dosha: "kapha", points: 3 }
+      { text: "bodyBuildThin", dosha: "vata", points: 3 },
+      { text: "bodyBuildMedium", dosha: "pitta", points: 3 },
+      { text: "bodyBuildLarge", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 2,
-    category: "Digestion",
-    question: "How is your digestion?",
+    category: "digestion",
+    question: "digestionQuestion",
     options: [
-      { text: "Irregular, sometimes bloated, gas", dosha: "vata", points: 3 },
-      { text: "Strong, can eat large meals, gets hungry", dosha: "pitta", points: 3 },
-      { text: "Slow, feels heavy after eating", dosha: "kapha", points: 3 }
+      { text: "digestionIrregular", dosha: "vata", points: 3 },
+      { text: "digestionStrong", dosha: "pitta", points: 3 },
+      { text: "digestionSlow", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 3,
-    category: "Mental & Emotional",
-    question: "How do you handle stress?",
+    category: "mentalEmotional",
+    question: "stressQuestion",
     options: [
-      { text: "Get anxious, worried, mind races", dosha: "vata", points: 3 },
-      { text: "Get irritated, angry, impatient", dosha: "pitta", points: 3 },
-      { text: "Remain calm, withdraw, get depressed", dosha: "kapha", points: 3 }
+      { text: "stressAnxious", dosha: "vata", points: 3 },
+      { text: "stressIrritated", dosha: "pitta", points: 3 },
+      { text: "stressCalm", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 4,
-    category: "Sleep Patterns",
-    question: "What is your sleep pattern like?",
+    category: "sleepPatterns",
+    question: "sleepQuestion",
     options: [
-      { text: "Light sleeper, difficulty falling asleep", dosha: "vata", points: 3 },
-      { text: "Moderate sleep, wake up refreshed", dosha: "pitta", points: 3 },
-      { text: "Deep sleeper, hard to wake up", dosha: "kapha", points: 3 }
+      { text: "sleepLight", dosha: "vata", points: 3 },
+      { text: "sleepModerate", dosha: "pitta", points: 3 },
+      { text: "sleepDeep", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 5,
-    category: "Energy Levels",
-    question: "How is your energy level throughout the day?",
+    category: "energyLevels",
+    question: "energyQuestion",
     options: [
-      { text: "Comes in bursts, then crashes", dosha: "vata", points: 3 },
-      { text: "Steady, high energy, focused", dosha: "pitta", points: 3 },
-      { text: "Steady but low, need motivation", dosha: "kapha", points: 3 }
+      { text: "energyBursts", dosha: "vata", points: 3 },
+      { text: "energySteady", dosha: "pitta", points: 3 },
+      { text: "energyLow", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 6,
-    category: "Health Tendencies",
-    question: "What health issues do you commonly face?",
+    category: "healthTendencies",
+    question: "healthIssuesQuestion",
     options: [
-      { text: "Anxiety, insomnia, dry skin, constipation", dosha: "vata", points: 3 },
-      { text: "Acidity, heartburn, skin rashes, anger", dosha: "pitta", points: 3 },
-      { text: "Weight gain, congestion, lethargy, depression", dosha: "kapha", points: 3 }
+      { text: "healthVata", dosha: "vata", points: 3 },
+      { text: "healthPitta", dosha: "pitta", points: 3 },
+      { text: "healthKapha", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 7,
-    category: "Environmental Preferences",
-    question: "How do you prefer the weather?",
+    category: "environmentalPreferences",
+    question: "weatherQuestion",
     options: [
-      { text: "Warm, humid weather, dislike cold", dosha: "vata", points: 3 },
-      { text: "Cool weather, dislike heat", dosha: "pitta", points: 3 },
-      { text: "Warm, dry weather, dislike cold & damp", dosha: "kapha", points: 3 }
+      { text: "weatherWarm", dosha: "vata", points: 3 },
+      { text: "weatherCool", dosha: "pitta", points: 3 },
+      { text: "weatherDry", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 8,
-    category: "Physical Characteristics",
-    question: "How would you describe your skin?",
+    category: "physicalCharacteristics",
+    question: "skinQuestion",
     options: [
-      { text: "Dry, rough, thin", dosha: "vata", points: 3 },
-      { text: "Oily, warm, prone to rashes", dosha: "pitta", points: 3 },
-      { text: "Thick, oily, smooth", dosha: "kapha", points: 3 }
+      { text: "skinDry", dosha: "vata", points: 3 },
+      { text: "skinOily", dosha: "pitta", points: 3 },
+      { text: "skinThick", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 9,
-    category: "Appetite",
-    question: "How is your appetite?",
+    category: "appetite",
+    question: "appetiteQuestion",
     options: [
-      { text: "Variable, sometimes forget to eat", dosha: "vata", points: 3 },
-      { text: "Strong, get irritable when hungry", dosha: "pitta", points: 3 },
-      { text: "Steady, can skip meals easily", dosha: "kapha", points: 3 }
+      { text: "appetiteVariable", dosha: "vata", points: 3 },
+      { text: "appetiteStrong", dosha: "pitta", points: 3 },
+      { text: "appetiteSteady", dosha: "kapha", points: 3 }
     ]
   },
   {
     id: 10,
-    category: "Learning Style",
-    question: "How do you learn best?",
+    category: "learningStyle",
+    question: "learningQuestion",
     options: [
-      { text: "Quick to learn, quick to forget", dosha: "vata", points: 3 },
-      { text: "Sharp intellect, good retention", dosha: "pitta", points: 3 },
-      { text: "Slow to learn, excellent retention", dosha: "kapha", points: 3 }
+      { text: "learningQuick", dosha: "vata", points: 3 },
+      { text: "learningSharp", dosha: "pitta", points: 3 },
+      { text: "learningSlow", dosha: "kapha", points: 3 }
     ]
   }
 ];
 
 export default function HealthAssessment() {
+  const { t } = useLanguage();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<{[key: number]: any}>({});
   const [isCompleted, setIsCompleted] = useState(false);
@@ -178,14 +180,14 @@ export default function HealthAssessment() {
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-lg shadow-sm p-8 text-center">
             <div className="animate-spin w-16 h-16 border-4 border-green-500 border-t-transparent rounded-full mx-auto mb-6"></div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Analyzing Your Constitution...</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">{t('analyzingConstitution')}</h2>
             <p className="text-gray-600 mb-6">
-              Our AI is processing your responses using ancient Ayurvedic principles combined with modern analysis techniques.
+              {t('analyzingDesc')}
             </p>
             <div className="space-y-2 text-sm text-gray-500">
-              <p>✓ Evaluating dosha patterns</p>
-              <p>✓ Calculating constitutional balance</p>
-              <p>✓ Generating personalized recommendations</p>
+              <p>✓ {t('evaluatingPatterns')}</p>
+              <p>✓ {t('calculatingBalance')}</p>
+              <p>✓ {t('generatingRecommendations')}</p>
             </div>
           </div>
         </div>
@@ -199,24 +201,24 @@ export default function HealthAssessment() {
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-lg shadow-sm p-8 text-center">
             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Assessment Complete!</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">{t('assessmentComplete')}</h2>
             <p className="text-gray-600 mb-6">
-              Thank you for completing the comprehensive health assessment. We have gathered detailed information about your constitution, lifestyle, and health patterns.
+              {t('assessmentCompleteDesc')}
             </p>
             <div className="bg-green-50 rounded-lg p-4 mb-6">
-              <h3 className="font-semibold text-gray-800 mb-2">What happens next?</h3>
+              <h3 className="font-semibold text-gray-800 mb-2">{t('whatHappensNext')}</h3>
               <ul className="text-sm text-gray-700 space-y-1">
-                <li>• AI analysis of your Ayurvedic constitution</li>
-                <li>• Personalized health recommendations</li>
-                <li>• Custom diet and lifestyle plan</li>
-                <li>• Wellness tracking dashboard</li>
+                <li>• {t('aiAnalysis')}</li>
+                <li>• {t('personalizedHealth')}</li>
+                <li>• {t('customDiet')}</li>
+                <li>• {t('wellnessTracking')}</li>
               </ul>
             </div>
             <button
               onClick={calculateResults}
               className="bg-green-600 text-white px-8 py-3 rounded-md hover:bg-green-700 transition-colors font-medium"
             >
-              Generate My Health Profile
+              {t('generateProfile')}
             </button>
           </div>
         </div>
@@ -234,9 +236,9 @@ export default function HealthAssessment() {
         {/* Progress Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-gray-800">Ayurvedic Health Assessment</h2>
+            <h2 className="text-2xl font-bold text-gray-800">{t('assessmentTitle')}</h2>
             <span className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
-              {currentQuestion + 1} of {questions.length}
+              {currentQuestion + 1} {t('questionOf')} {questions.length}
             </span>
           </div>
           
@@ -248,15 +250,15 @@ export default function HealthAssessment() {
           </div>
           
           <div className="flex justify-between text-sm text-gray-600">
-            <span>{question.category}</span>
-            <span>{Math.round(progress)}% Complete</span>
+            <span>{t(question.category)}</span>
+            <span>{Math.round(progress)}% {t('complete')}</span>
           </div>
         </div>
 
         {/* Question Card */}
         <div className="bg-white rounded-lg shadow-sm p-8">
           <h3 className="text-xl font-semibold text-gray-800 mb-6">
-            {question.question}
+            {t(question.question)}
           </h3>
 
           <div className="space-y-4 mb-8">
@@ -280,7 +282,7 @@ export default function HealthAssessment() {
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     )}
                   </div>
-                  <span className="text-gray-700">{option.text}</span>
+                  <span className="text-gray-700">{t(option.text)}</span>
                 </div>
               </button>
             ))}
@@ -294,11 +296,11 @@ export default function HealthAssessment() {
               className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ArrowLeft size={16} />
-              <span>Previous</span>
+              <span>{t('previous')}</span>
             </button>
 
             <div className="text-sm text-gray-500">
-              {currentAnswer ? 'Click Next to continue' : 'Select an option to continue'}
+              {currentAnswer ? t('clickNext') : t('selectOption')}
             </div>
 
             <button
@@ -306,7 +308,7 @@ export default function HealthAssessment() {
               disabled={!currentAnswer}
               className="flex items-center space-x-2 bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span>{currentQuestion === questions.length - 1 ? 'Complete' : 'Next'}</span>
+              <span>{currentQuestion === questions.length - 1 ? t('complete') : t('next')}</span>
               <ArrowRight size={16} />
             </button>
           </div>
@@ -315,7 +317,7 @@ export default function HealthAssessment() {
         {/* Help Text */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-500">
-            Choose the option that best describes you most of the time. There are no right or wrong answers.
+            {t('language') === 'kannada' ? 'ಹೆಚ್ಚಿನ ಸಮಯ ನಿಮ್ಮನ್ನು ಉತ್ತಮವಾಗಿ ವರ್ಣಿಸುವ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ. ಸರಿ ಅಥವಾ ತಪ್ಪು ಉತ್ತರಗಳಿಲ್ಲ.' : 'Choose the option that best describes you most of the time. There are no right or wrong answers.'}
           </p>
         </div>
       </div>

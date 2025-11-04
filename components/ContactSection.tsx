@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from 'react';
+import { useLanguage } from '@/lib/contexts/LanguageContext';
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,20 +21,19 @@ export default function ContactSection() {
     <section id="contact" className="py-16 px-6" style={{ backgroundColor: '#A7D5A7' }}>
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Get In Touch</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6">{t('getInTouch')}</h2>
           <p className="text-gray-700 mb-8 leading-relaxed">
-            Have questions about your health or need guidance from an<br />
-            Ayurvedic practitioner?
+            {t('questionsAboutHealth')}
           </p>
           <div className="space-y-2">
             <p className="text-gray-700">
-              <span className="font-medium">Email:</span> support@ayurinsights.com
+              <span className="font-medium">{t('email')}:</span> support@ayurinsights.com
             </p>
             <p className="text-gray-700">
-              <span className="font-medium">Phone:</span> +91 1234567890
+              <span className="font-medium">{t('phone')}:</span> +91 1234567890
             </p>
             <p className="text-gray-700">
-              <span className="font-medium">Consultation Hours:</span> Mon-Fri 8:00 AM - 6:00 PM IST
+              <span className="font-medium">{t('consultationHours')}:</span> Mon-Fri 8:00 AM - 6:00 PM IST
             </p>
           </div>
         </div>
@@ -40,7 +41,7 @@ export default function ContactSection() {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('fullName')}</label>
               <input
                 type="text"
                 value={formData.name}
@@ -50,7 +51,7 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('email')}</label>
               <input
                 type="email"
                 value={formData.email}
@@ -60,7 +61,7 @@ export default function ContactSection() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{t('message')}</label>
               <textarea
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -73,7 +74,7 @@ export default function ContactSection() {
               type="submit"
               className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors font-medium"
             >
-              Send Message
+              {t('sendMessage')}
             </button>
           </form>
         </div>
